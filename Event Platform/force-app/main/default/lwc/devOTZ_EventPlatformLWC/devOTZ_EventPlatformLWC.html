@@ -1,0 +1,40 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid headerlwc">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate slds-has-dividers_right">
+                <div class="slds-media__figure">
+                    <lightning-icon slot="media" icon-name="utility:task" class="myHeart"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <a href="#" class="slds-card__header-link slds-truncate" title="task (1)">
+                            <span>{labelHeader} ({datalength})</span>
+                        </a>
+                    </h2>
+                </div>
+                <div class="slds-no-flex">
+                    <lightning-button-icon icon-name="utility:refresh" onclick={refreshData} alternative-text="Refresh"
+                        title="Refresh"></lightning-button-icon>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-scrollable_y" style={scrollable_y}>
+            
+            <ul class="slds-has-dividers_bottom-space">
+                <template for:each={dataTask} for:item="item">
+                    <div key={item.Id} class="slds-box">
+                        <li class="slds-item slds-p-left_small">
+                            <lightning-tile label={item.Subject} href="/bruce.html" type="media">
+                                <lightning-icon slot="media" icon-name="utility:task" class={item.Color__c}></lightning-icon>
+                                <ul class="slds-list_horizontal slds-has-dividers_right">
+                                    <li class="slds-item">{item.ActivityDate}</li>
+                                    <li class="slds-item">{item.Priority}</li>
+                                </ul>
+                            </lightning-tile>
+                        </li>
+                    </div>
+                </template>
+            </ul>
+        </div>
+    </article>
+</template>
